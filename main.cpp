@@ -12,8 +12,8 @@
 int main( int argc, char *argv[] )
 {
 
-    int n, m;
-    m = 5000;
+    unsigned int n, m;
+    m = 100000;
     int sumSwitch = 0;
     int sumStay = 0;
 
@@ -35,33 +35,36 @@ int main( int argc, char *argv[] )
     for(n = 0; n<m;n++)
     {
         int curResult = e.conductExperiment(Experiment::allwaysStay);
-        //std::cout << "Result: " << curResult << std::endl << std::endl;
         sumStay += curResult;
+
+        curResult = e.conductExperiment(Experiment::allwaysSwitch);
+        sumSwitch += curResult;
+
+        if((n%1000)==0)
+        {
+            QVector<QwtIntervalSample> data;
+            data.append( QwtIntervalSample(n,0,1));
+            data.append( QwtIntervalSample(sumSwitch,1,2));
+            data.append( QwtIntervalSample(n-sumSwitch,2,3));
+            data.append( QwtIntervalSample(n,5,6));
+            data.append( QwtIntervalSample(sumStay,6,7));
+            data.append( QwtIntervalSample(n-sumStay,7,8));
+            
+            h->setSamples(data);
+            h->attach(&w);
+            w.replot();
+            w.show();
+            std::cout << "\r";
+            std::cout << (n/(double)m)*100 << "%";
+        }
     }
     std::cout << "Number of Wins: " << sumStay << std::endl;
     std::cout << "Number of Loses: " << m-sumStay << std::endl;
 
-    for(n = 0; n<m;n++)
-    {
-        int curResult = e.conductExperiment(Experiment::allwaysSwitch);
-        //std::cout << "Result: " << curResult << std::endl << std::endl;
-        sumSwitch += curResult;
-    }
     std::cout << "Number of Wins: " << sumSwitch << std::endl;
     std::cout << "Number of Loses: " << m-sumSwitch << std::endl;
 
 
-    QVector<QwtIntervalSample> data;
-    data.append( QwtIntervalSample(sumSwitch,1,2));
-    data.append( QwtIntervalSample(m-sumSwitch,2,3));
-    data.append( QwtIntervalSample(sumStay,5,6));
-    data.append( QwtIntervalSample(m-sumStay,6,7));
 
-    h->setSamples(data);
-    h->attach(&w);
-
-
-    w.replot();
-    w.show();
     return a.exec();
 }
