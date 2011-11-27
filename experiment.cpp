@@ -1,5 +1,3 @@
-#include <iostream>
-#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
@@ -28,12 +26,6 @@ char Experiment::conductExperiment(char switchingMode)
         openDoor = rand() % 3;
     } while(openDoor==winningDoor||openDoor==choosenDoor);
     
-    using namespace std;
-    cout << "winningDoor: " << (int)winningDoor << endl;
-    cout << "choosenDoor: " << (int)choosenDoor << endl;
-    //cout << "switchingDoor: " << (int)switchingDoor << endl;
-    cout << "openDoor: " << (int)openDoor << endl;
-    //cout << "remainingDoor: " << (int)remainingDoor << endl;
     if(switchingMode == allwaysStay)
     {
         if(choosenDoor == winningDoor)
