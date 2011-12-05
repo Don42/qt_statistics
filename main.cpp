@@ -22,15 +22,8 @@ int main( int argc, char *argv[] )
     int sumStay = 0;
 
     QApplication a (argc, argv);
-    QWidget *window = new QWidget();
-    QVBoxLayout *layout = new QVBoxLayout();
     QwtPlot pSwitch, pStay;
     Experiment e;
-    
-    layout->addWidget(&pSwitch);
-    layout->addWidget(&pStay);
-
-    window->setLayout(layout);
 
     pSwitch.setTitle( "Allways Switch" );
     pStay.setTitle( "Allways Stay" );
@@ -75,7 +68,8 @@ int main( int argc, char *argv[] )
             hStay->attach(&pStay);
             pSwitch.replot();
             pStay.replot();
-            window->show();
+            pSwitch.show();
+            pStay.show();
             std::cout << "\r";
             std::cout << (n/(double)m)*100 << "%";
         }
