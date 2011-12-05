@@ -21,7 +21,7 @@ class AllwaysStayPlot : public QwtPlot
     
         //Constructor
         AllwaysStayPlot(int count = 5000);
-        ~AllwaysStayPlot(){};
+        virtual ~AllwaysStayPlot();
 
 };
 

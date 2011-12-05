@@ -33,5 +33,11 @@ AllwaysStayPlot::AllwaysStayPlot(int count)
 
     graph.setSamples( data );
     graph.attach( this );
-    
+}
+
+AllwaysStayPlot::~AllwaysStayPlot()
+{
+    delete &data;
+    delete &graph,
+    delete &symbol;
 }
