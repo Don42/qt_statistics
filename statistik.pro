@@ -9,5 +9,5 @@ INCLUDEPATH += /usr/include/qwt
 LIBS += -L/usr/lib -lqwt
 
 # Input
-HEADERS += experiment.h
-SOURCES += experiment.cpp main.cpp
+HEADERS += experiment.h allwaysStayPlot.h
+SOURCES += experiment.cpp main.cpp allwaysStayPlot.cpp
