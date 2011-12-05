@@ -1,16 +1,11 @@
 #include "allwaysStayPlot.h"
 #include "experiment.h"
 
-#include <qwt_plot_histogram.h>
-#include <qwt_column_symbol.h>
-
 
 
 AllwaysStayPlot::AllwaysStayPlot(int count)
 {
     Experiment ex;
-    QwtPlotHistogram graph;
-    QwtColumnSymbol symbol;
 
     int sum, n;
     n = sum = 0;
@@ -36,6 +31,7 @@ AllwaysStayPlot::AllwaysStayPlot(int count)
     data.append( QwtIntervalSample(sum, 1, 2));
     data.append( QwtIntervalSample(count-sum, 2, 3));
 
-    graph.setSamples(data);
+    graph.setSamples( data );
     graph.attach( this );
+    
 }
