@@ -3,11 +3,11 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET =
 DEPENDPATH += .
 INCLUDEPATH += /usr/include/qwt
 LIBS += -L/usr/lib -lqwt
 
 # Input
-HEADERS += experiment.h allwaysStayPlot.h
-SOURCES += experiment.cpp main.cpp allwaysStayPlot.cpp
+HEADERS += experiment.h allwaysStayPlot.h allwaysSwitchPlot.h
+SOURCES += experiment.cpp main.cpp allwaysStayPlot.cpp allwaysSwitchPlot.cpp
