@@ -7,8 +7,8 @@ AllwaysSwitchPlot::AllwaysSwitchPlot(int count)
 {
     Experiment ex;
 
-    int sum, n;
-    n = sum = 0;
+    int wins, n;
+    n = wins = 0;
 
     /*Setting up Look*/
     this->setTitle( "Allways Switch" );
@@ -23,13 +23,13 @@ AllwaysSwitchPlot::AllwaysSwitchPlot(int count)
     for(n = 0; n < count; n++)
     {
         int curResult = ex.conductExperiment( Experiment::allwaysSwitch );
-        sum += curResult;
+        wins += curResult;
     }
 
 
-    data.append( QwtIntervalSample( count, 0, 1 ));
-    data.append( QwtIntervalSample( sum, 1, 2 ));
-    data.append( QwtIntervalSample( count-sum, 2, 3 ));
+    //data.append( QwtIntervalSample( count, 0, 1 ));
+    data.append( QwtIntervalSample( wins, 1, 2 ));
+    data.append( QwtIntervalSample( count - wins, 2, 3 ));
 
     graph.setSamples( data );
     graph.attach( this );
